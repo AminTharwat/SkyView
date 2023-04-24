@@ -5,10 +5,15 @@ var cityArr = [];
 
 
  function showSavedData() {
+   
+   
     var cityArr = JSON.parse(localStorage.getItem('citylist'));
 
 
     for (var i = 0; i < cityArr.length; i++) {
+        
+        
+        
         console.log("cityArr", cityArr);
 
 
@@ -25,6 +30,7 @@ var cityArr = [];
             var cityName = this.id;
 
             getWeatherToday(cityName, "existing");
+          
             getWeatherForecast(cityName, APIKey);
 
 
@@ -39,6 +45,8 @@ var cityArr = [];
 $('#find-city').on("click", function (event) {
     event.preventDefault();
     getWeatherTodayButton();
+   
+   
     getWeatherForecastButton(APIKey);
     saveCity();
 });
@@ -113,6 +121,10 @@ function getWeatherToday(cityInput, callType) {
 
 
             cityLat = response.coord.lat;
+         
+         
+         
+         
             cityLon = response.coord.lon;
 
             getUVInd(APIKey, cityLat, cityLon);
@@ -152,7 +164,11 @@ function getWeatherToday(cityInput, callType) {
  
 
 function getWeatherForecastButton(APIKey) {
+   
+   
     var cityInput = $("#city-input").val();
+   
+   
     getWeatherForecast(cityInput, APIKey)
 }
 
@@ -187,17 +203,22 @@ function getWeatherForecast(cityInput, APIKey) {
 
 
                 var getForDate = getForInfo[i * 7].dt * 1000;
+               
                 var getWeatherDate = new Date(getForDate).getDate();
+             
+             
                 var getWeatherMonth = new Date(getForDate).getMonth();
                 var getWeatherYear = new Date(getForDate).getFullYear();
 
+              
+              
                 var getForTempF = getForInfo[i * 7].main.temp;
 
                 var getForHum = getForInfo[i * 7].main.humidity;
 
 
 
-                var cardWeather = $('<div>').attr({ "class": "card bg-info shadow m-4 flex-container" });
+                var cardWeather = $('<div>').attr({ "class": "card bg-info shadow-lg m-4 flex-container" });
 
                 var cardBodyWeather = $('<div>').attr({ "class": "card-body" });
                 var iconURL = $('<img>').attr({ "src": "https://openweathermap.org/img/w/" + getIcon + ".png" });
@@ -206,8 +227,14 @@ function getWeatherForecast(cityInput, APIKey) {
 
 
                 var weatherIcon = $("<p>").append(iconURL);
-                 var getForTempC = (getForTempF - 32) * 5/9;
+             
+             
+             
+                var getForTempC = (getForTempF - 32) * 5/9;
                 var weatherForTemp = $('<p>').html("Temperature: " + getForTempC.toFixed() + "&deg;C");
+              
+              
+              
                 var weatherForHum = $('<p>').html("Humidity: " + getForHum + "% <br>");
 
 
