@@ -29,6 +29,4 @@ Credits
 
 This application was created by [amin tharwat]. Weather data is provided in collaboration with the OpenWeatherMap API.
 
-License
-
-This application is licensed under the MIT License.
+ 
